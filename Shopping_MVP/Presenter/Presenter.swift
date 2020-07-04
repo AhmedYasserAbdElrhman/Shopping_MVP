@@ -12,7 +12,6 @@ protocol getToDos {
     func HideHud()
     func getDataSuccessfully()
     func showError(error: String)
-    var idsArray: [Int] {get}
 
  }
 protocol reloadCellTitles {
@@ -35,9 +34,11 @@ class Presenter {
     private var registerModel:RegisterModel?
     private var catoragt = [Datum]()
     private var product = [ProductModelDatum]()
-    public var FavProductitem = [FavProduct]()
+    public var favProductitem = [FavProduct]()
  
-    
+   var idsArray: [Int] {
+get { return favProductitem.data.map { $0. }
+} 
     init(view: getToDos) {
         self.view = view
     }
